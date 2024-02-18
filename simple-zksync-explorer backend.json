@@ -1,0 +1,22 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch transactions data from zkSync (replace with actual API endpoint)
+    fetch('https://api.zksync.io/transactions')
+        .then(response => response.json())
+        .then(transactions => {
+            const transactionsDiv = document.getElementById('transactions');
+            transactions.forEach(transaction => {
+                const transactionDiv = document.createElement('div');
+                transactionDiv.classList.add('transaction');
+
+                const hashParagraph = document.createElement('p');
+                hashParagraph.classList.add('hash');
+                hashParagraph.textContent = `Hash: ${transaction.hash}`;
+                transactionDiv.appendChild(hashParagraph);
+
+                // Add more transaction details as needed
+
+                transactionsDiv.appendChild(transactionDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching transactions:', error));
+});
